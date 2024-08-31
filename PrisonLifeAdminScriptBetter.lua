@@ -291,7 +291,7 @@ if DisableScript then
 	DisableScript()
 end
 
-local Slient = false
+local Slient = true
 local ScriptDisabled = false
 local LoopBeam = {}
 local LoopKill = {}
