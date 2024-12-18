@@ -1,5 +1,5 @@
 if getgenv().ran_jobid_joiner then
-    return 
+    return
 end
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -7,6 +7,7 @@ local Frame = Instance.new("Frame")
 local TextBox1 = Instance.new("TextBox")
 local TextBox2 = Instance.new("TextBox")
 local SubmitButton = Instance.new("TextButton")
+local CurrentPlaceIdButton = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
 local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
 local UIGradient = Instance.new("UIGradient")
@@ -18,8 +19,8 @@ ScreenGui.IgnoreGuiInset = true
 
 Frame.Parent = ScreenGui
 Frame.Name = "JOBID_FRAME"
-Frame.Size = UDim2.new(0, 350, 0, 250)
-Frame.Position = UDim2.new(0.5, -175, 0.5, -125)
+Frame.Size = UDim2.new(0, 350, 0, 300)
+Frame.Position = UDim2.new(0.5, -175, 0.5, -150)
 Frame.BackgroundColor3 = Color3.new(0.15, 0.15, 0.15)
 Frame.BackgroundTransparency = 0.1
 
@@ -96,6 +97,30 @@ SubmitButton.MouseButton1Click:Connect(function()
     else
         warn("Invalid input. Please fill out both fields correctly.")
     end
+end)
+
+CurrentPlaceIdButton.Parent = Frame
+CurrentPlaceIdButton.Size = UDim2.new(0, 250, 0, 40)
+CurrentPlaceIdButton.Position = UDim2.new(0.5, -125, 0, 220)
+CurrentPlaceIdButton.Text = "Use Current Place ID"
+CurrentPlaceIdButton.Font = Enum.Font.SourceSansBold
+CurrentPlaceIdButton.TextSize = 22
+CurrentPlaceIdButton.TextColor3 = Color3.new(1, 1, 1)
+CurrentPlaceIdButton.BackgroundColor3 = Color3.new(0.15, 0.7, 1)
+
+local CurrentPlaceIdButtonCorner = UICorner:Clone()
+CurrentPlaceIdButtonCorner.Parent = CurrentPlaceIdButton
+
+CurrentPlaceIdButton.MouseEnter:Connect(function()
+    CurrentPlaceIdButton.BackgroundColor3 = Color3.new(0.1, 0.6, 1)
+end)
+
+CurrentPlaceIdButton.MouseLeave:Connect(function()
+    CurrentPlaceIdButton.BackgroundColor3 = Color3.new(0.15, 0.7, 1)
+end)
+
+CurrentPlaceIdButton.MouseButton1Click:Connect(function()
+    TextBox2.Text = tostring(game.PlaceId)
 end)
 
 local dragging = false
